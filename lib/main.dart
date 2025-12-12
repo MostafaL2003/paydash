@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paydash/features/auth/login_screen.dart';
 import 'package:paydash/features/dashboard/cubit/dashboard_cubit.dart';
 import 'package:paydash/features/dashboard/models/transaction_model.dart';
 import 'features/dashboard/screens/dashboard_screen.dart';
@@ -21,12 +22,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (_) => DashboardCubit(),
-        ),
-        BlocProvider(
-          create: (_) => ThemeCubit(Hive.box('theme_box')),
-        ),
+        BlocProvider(create: (_) => DashboardCubit()),
+        BlocProvider(create: (_) => ThemeCubit(Hive.box('theme_box'))),
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, themeMode) {
@@ -35,7 +32,7 @@ class MyApp extends StatelessWidget {
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: themeMode,
-            home: const DashboardScreen(),
+            home: const LoginScreen(),
             debugShowCheckedModeBanner: false,
           );
         },
