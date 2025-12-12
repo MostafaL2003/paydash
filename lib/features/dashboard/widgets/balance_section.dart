@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paydash/core/app_colors.dart';
+import 'package:paydash/features/dashboard/screens/history_screen.dart';
 import 'package:paydash/features/dashboard/screens/transfer_screen.dart';
 
 class BalanceSection extends StatelessWidget {
@@ -8,14 +8,17 @@ class BalanceSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textColor = theme.textTheme.bodyLarge?.color ?? Colors.white;
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: theme.cardColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withOpacity(0.2),
+            color: theme.colorScheme.primary.withOpacity(0.2),
             blurRadius: 24,
             spreadRadius: 2,
             offset: const Offset(0, 8),
@@ -32,7 +35,7 @@ class BalanceSection extends StatelessWidget {
               Text(
                 'Total Balance',
                 style: TextStyle(
-                  color: Colors.grey[400],
+                  color: textColor.withOpacity(0.6),
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                 ),
@@ -41,7 +44,7 @@ class BalanceSection extends StatelessWidget {
               Text(
                 'EGP ${balance.toStringAsFixed(2)}',
                 style: TextStyle(
-                  color: AppColors.textWhite,
+                  color: textColor,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
@@ -51,22 +54,38 @@ class BalanceSection extends StatelessWidget {
 
           // Right Side
           Row(
-              children: [
+            children: [
               GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (_) => const TransferScreen(),
-                    ),
+                    MaterialPageRoute(builder: (_) => const TransferScreen()),
                   );
                 },
                 child: _CircleIconButton(icon: Icons.send),
               ),
               const SizedBox(width: 10),
-              _CircleIconButton(icon: Icons.request_page),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const HistoryScreen()),
+                  );
+                },
+                child: _CircleIconButton(icon: Icons.history),
+              ),
               const SizedBox(width: 10),
-              _CircleIconButton(icon: Icons.history),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const TransferScreen(isRequest: true),
+                    ),
+                  );
+                },
+                child: _CircleIconButton(icon: Icons.request_page),
+              ),
             ],
           ),
         ],
@@ -81,21 +100,24 @@ class _CircleIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textColor = theme.textTheme.bodyLarge?.color ?? Colors.white;
+
     return Container(
       width: 40,
       height: 40,
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1),
+        color: textColor.withOpacity(0.1),
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withOpacity(0.08),
+            color: theme.colorScheme.primary.withOpacity(0.08),
             blurRadius: 10,
             offset: const Offset(0, 3),
           ),
         ],
       ),
-      child: Icon(icon, color: AppColors.textWhite, size: 22),
+      child: Icon(icon, color: textColor, size: 22),
     );
   }
 }

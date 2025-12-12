@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:paydash/core/app_colors.dart';
 
 class CreditCardWidget extends StatelessWidget {
   const CreditCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textColor = theme.colorScheme.onPrimary;
+    
     return Container(
       width: 320,
       height: 200,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [AppColors.primary, AppColors.surface],
+          colors: [theme.colorScheme.primary, theme.cardColor],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -19,7 +21,7 @@ class CreditCardWidget extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             // ignore: deprecated_member_use
-            color: AppColors.primary.withOpacity(0.24),
+            color: theme.colorScheme.primary.withOpacity(0.24),
             offset: const Offset(0, 8),
             blurRadius: 24,
           ),
@@ -31,7 +33,7 @@ class CreditCardWidget extends StatelessWidget {
           Positioned(
             top: 28,
             right: 28,
-            child: _VisaLogo(),
+            child: _VisaLogo(textColor: textColor),
           ),
           // Card number bottom-left
           Positioned(
@@ -40,7 +42,7 @@ class CreditCardWidget extends StatelessWidget {
             child: Text(
               '**** **** **** 1234',
               style: TextStyle(
-                color: AppColors.textWhite,
+                color: textColor,
                 fontSize: 22,
                 fontWeight: FontWeight.w600,
                 letterSpacing: 2.5,
@@ -54,6 +56,10 @@ class CreditCardWidget extends StatelessWidget {
 }
 
 class _VisaLogo extends StatelessWidget {
+  final Color textColor;
+  
+  const _VisaLogo({required this.textColor});
+  
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -71,7 +77,7 @@ class _VisaLogo extends StatelessWidget {
         Text(
           'isa',
           style: TextStyle(
-            color: AppColors.textWhite,
+            color: textColor,
             fontWeight: FontWeight.w900,
             fontSize: 20,
             fontStyle: FontStyle.italic,
