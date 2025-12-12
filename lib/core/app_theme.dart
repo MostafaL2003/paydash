@@ -1,33 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
+import 'package:paydash/core/app_colors.dart';
 
 class AppTheme {
-  // Dark theme colors
-  static const Color _darkBackground = Color(0xFF1A0023);
-  static const Color _darkPrimary = Color(0xFF9B00FF);
-  static const Color _darkSurface = Color(0xFF4B006E);
 
-  // Light theme colors
-  static const Color _lightBackground = Color(0xFFF3F0FF);
-  static const Color _lightPrimary = Color(0xFF9B00FF);
-  static const Color _lightSurface = Colors.white;
-  static const Color _lightText = Color(0xFF1E1E2C);
+
+
+  static const Color _darkBackground = Color(0xFF180030); 
+  static const Color _darkSurface = Color(0xFF2F0052); 
+
+
+  static const Color _lightBackground = Color(
+    0xFFF6F0FF,
+  );
+  static const Color _lightText = Color(0xFF240046); 
 
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: _darkBackground,
-    primaryColor: _darkPrimary,
+    scaffoldBackgroundColor: const Color(0xFF180030),
+    primaryColor: AppColors.primary,
     cardColor: _darkSurface,
+
     colorScheme: ColorScheme.dark(
-      primary: _darkPrimary,
+      primary: AppColors.primary,
       surface: _darkSurface,
       background: _darkBackground,
       onPrimary: Colors.white,
       onSurface: Colors.white,
       onBackground: Colors.white,
     ),
-    appBarTheme: AppBarTheme(
+
+    appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.white),
@@ -37,6 +41,8 @@ class AppTheme {
         fontSize: 20,
       ),
     ),
+
+ 
     textTheme: const TextTheme(
       bodyLarge: TextStyle(color: Colors.white),
       bodyMedium: TextStyle(color: Colors.white),
@@ -49,24 +55,28 @@ class AppTheme {
       displayMedium: TextStyle(color: Colors.white),
       displaySmall: TextStyle(color: Colors.white),
     ),
+
     iconTheme: const IconThemeData(color: Colors.white),
-    dividerColor: Colors.white12,
+    dividerColor: Colors.white24,
     dialogBackgroundColor: _darkSurface,
+    useMaterial3: true,
   );
 
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: _lightBackground,
-    primaryColor: _lightPrimary,
-    cardColor: _lightSurface,
+    primaryColor: AppColors.primary,
+    cardColor: Colors.white,
+
     colorScheme: ColorScheme.light(
-      primary: _lightPrimary,
-      surface: _lightSurface,
+      primary: AppColors.primary,
+      surface: Colors.white,
       background: _lightBackground,
       onPrimary: Colors.white,
       onSurface: _lightText,
       onBackground: _lightText,
     ),
+
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -77,6 +87,8 @@ class AppTheme {
         fontSize: 20,
       ),
     ),
+
+ 
     textTheme: const TextTheme(
       bodyLarge: TextStyle(color: _lightText),
       bodyMedium: TextStyle(color: _lightText),
@@ -89,14 +101,17 @@ class AppTheme {
       displayMedium: TextStyle(color: _lightText),
       displaySmall: TextStyle(color: _lightText),
     ),
+
     iconTheme: const IconThemeData(color: _lightText),
-    dividerColor: Colors.black12,
-    dialogBackgroundColor: _lightSurface,
+    dividerColor: const Color(0xFF2F0052).withOpacity(0.1),
+    dialogBackgroundColor: Colors.white,
+    useMaterial3: true,
   );
 }
 
+
 class ThemeCubit extends Cubit<ThemeMode> {
-  static const String _themeKey = 'theme_mode'; // 'light'/'dark'
+  static const String _themeKey = 'theme_mode';
   final Box _box;
 
   ThemeCubit(this._box) : super(_initialTheme(_box));
@@ -105,7 +120,6 @@ class ThemeCubit extends Cubit<ThemeMode> {
     final String? mode = box.get(_themeKey) as String?;
     if (mode == 'dark') return ThemeMode.dark;
     if (mode == 'light') return ThemeMode.light;
-    // Default fallback
     return ThemeMode.dark;
   }
 

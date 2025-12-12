@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paydash/features/analytics/screens/analytics_screen.dart';
 import 'package:paydash/features/dashboard/screens/profile_screen.dart';
 import 'package:paydash/features/dashboard/widgets/balance_section.dart';
 import 'package:paydash/features/dashboard/widgets/credit_card_widget.dart';
@@ -19,6 +20,20 @@ class DashboardScreen extends StatelessWidget {
         return Scaffold(
           backgroundColor: theme.scaffoldBackgroundColor,
           appBar: AppBar(
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.analytics),
+                tooltip: 'Analytics',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const AnalyticsScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
             backgroundColor: Colors.transparent,
             elevation: 0,
             leading: GestureDetector(
