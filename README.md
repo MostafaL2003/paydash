@@ -15,12 +15,12 @@ This project demonstrates advanced state management, local persistence, and secu
 
 | **Secure Login** | **Smart Dashboard** | **Recipient Selection** |
 |:---:|:---:|:---:|
-| <img src="screenshots/login.png" width="250" /> | <img src="screenshots/dashboard_dark.jpg" width="250" /> | <img src="screenshots/receipent.png" width="250" /> |
+| <img src="screenshots/login.png" width="250" /> | <img src="screenshots/dashboard_dark.png" width="250" /> | <img src="screenshots/receipent.png" width="250" /> |
 | Custom PIN Security | Real-time Balance & Transactions | Smart Favorites & Search |
 
 | **Transfer Amount** | **Profile & Settings** | **Dynamic Light Mode** |
 |:---:|:---:|:---:|
-| <img src="screenshots/pay_request.png" width="250" /> | <img src="screenshots/profile.png" width="250" /> | <img src="screenshots/home_light.jpg" width="250" /> |
+| <img src="screenshots/pay_request.png" width="250" /> | <img src="screenshots/profile.png" width="250" /> | <img src="screenshots/home_light.png" width="250" /> |
 | Input Validation Logic | Theme Toggle & Logout | Lavender/White Theme |
 
 ## 🛠️ Tech Stack
