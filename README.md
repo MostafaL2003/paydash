@@ -1,16 +1,50 @@
-# paydash
+# 🟣 PayDash - Modern Fintech Dashboard
 
-A new Flutter project.
+A high-performance, aesthetically pleasing Fintech Dashboard built with **Flutter**.
+This project demonstrates advanced state management, local persistence, and secure authentication flows in a clean architecture.
 
-## Getting Started
+## 📱 Features
 
-This project is a starting point for a Flutter application.
+* **🔐 Secure Authentication:** Custom PIN-based login system (`1-2-3-4`) with secure session management.
+* **💸 Smart Transactions:** Complete transfer flow with recipient selection and real-time balance updates.
+* **🧠 Local Persistence:** Built with **Hive** (NoSQL) to persist transactions and user balance across sessions.
+* **🎨 Dynamic Theming:** Custom "Electric Violet" (Dark) and "Crisp Lavender" (Light) modes using `Bloc` state management.
+* **🛡️ Validation:** Prevents overspending (Insufficient Funds) and handles secure navigation.
 
-A few resources to get you started if this is your first Flutter project:
+## 📸 App Screenshots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+| **Secure Login** | **Smart Dashboard** | **Recipient Selection** |
+|:---:|:---:|:---:|
+| <img src="screenshots/login.png" width="250" /> | <img src="screenshots/dashboard_dark.jpg" width="250" /> | <img src="screenshots/receipent.png" width="250" /> |
+| Custom PIN Security | Real-time Balance & Transactions | Smart Favorites & Search |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| **Transfer Amount** | **Profile & Settings** | **Dynamic Light Mode** |
+|:---:|:---:|:---:|
+| <img src="screenshots/pay_request.png" width="250" /> | <img src="screenshots/profile.png" width="250" /> | <img src="screenshots/home_light.jpg" width="250" /> |
+| Input Validation Logic | Theme Toggle & Logout | Lavender/White Theme |
+
+## 🛠️ Tech Stack
+
+* **Framework:** Flutter (Dart)
+* **State Management:** `flutter_bloc` (Cubit)
+* **Database:** `hive` & `hive_flutter` (TypeAdapters generated with `build_runner`)
+* **Architecture:** Feature-first, Clean Architecture
+
+## 🚀 How to Run
+
+1.  **Clone the repo:**
+    ```bash
+    git clone [https://github.com/your-username/paydash.git](https://github.com/your-username/paydash.git)
+    ```
+2.  **Install Dependencies:**
+    ```bash
+    flutter pub get
+    ```
+3.  **Run the Generator (for Hive):**
+    ```bash
+    flutter pub run build_runner build
+    ```
+4.  **Run the App:**
+    ```bash
+    flutter run
+    ```
