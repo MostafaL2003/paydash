@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:paydash/core/app_theme.dart';
+import 'package:paydash/features/auth/login_screen.dart';
+import 'package:paydash/features/dashboard/cubit/dashboard_cubit.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -110,7 +112,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '12 Transactions',
+                                '${context.watch<DashboardCubit>().state.transactions.length} Transactions',
                                 style: TextStyle(
                                   color: textColor,
                                   fontWeight: FontWeight.w600,
@@ -242,7 +244,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           onTap: () {
-                            // Add log out functionality here
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (_) => const LoginScreen(),
+                              ),
+                            );
+
                           },
                           tileColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
